@@ -117,18 +117,33 @@ Grid display of top repositories with stars, forks, and language info.
 
 ### GitHub API Rate Limits
 
-The application uses the public GitHub API without authentication:
-- **Rate Limit**: 60 requests per hour per IP address
+The application uses the public GitHub API:
+- **Without Token**: 60 requests per hour per IP address
 - **With Token**: 5,000 requests per hour (recommended for production)
 
-To add authentication (optional):
+### ⚠️ Important: Add GitHub Token (Recommended)
 
-1. Create a `.env.local` file:
+To avoid rate limit issues:
+
+1. **Create a GitHub Personal Access Token**:
+   - Visit: https://github.com/settings/tokens
+   - Generate new token (classic)
+   - Select `public_repo` scope (or no scopes for public data only)
+   - Copy the token
+
+2. **Create a `.env.local` file** in the project root:
 ```env
-NEXT_PUBLIC_GITHUB_TOKEN=your_github_token_here
+NEXT_PUBLIC_GITHUB_TOKEN=your_github_personal_access_token
 ```
 
-2. Update `src/services/githubService.ts` to include the token in headers.
+3. **Restart the development server**:
+```bash
+npm run dev
+```
+
+The token is automatically used by the GitHub service - no code changes needed!
+
+> 📖 For detailed instructions, see [RATE_LIMIT_SOLUTION.md](./RATE_LIMIT_SOLUTION.md)
 
 ## 📝 Scripts
 
