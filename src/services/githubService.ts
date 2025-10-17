@@ -33,29 +33,70 @@ export interface LanguageStats {
 class GitHubService {
   private baseUrl = 'https://api.github.com';
 
-  async fetchUser(username: string): Promise<GitHubUser> {
-    const response = await fetch(`${this.baseUrl}/users/${username}`);
-    
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error('User not found');
-      }
-      throw new Error('Failed to fetch user data');
+  private getHeaders(): HeadersInit {
+    const headers: HeadersInit = {
+      'Accept': 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    };
+
+    // Add token if available
+    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_GITHUB_TOKEN) {
+      headers['Authorization'] = `token ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`;
     }
-    
-    return response.json();
+
+    return headers;
+  }
+
+  async fetchUser(username: string): Promise<GitHubUser> {
+    try {
+      const response = await fetch(`${this.baseUrl}/users/${username}`, {
+        headers: this.getHeaders(),
+        cache: 'no-store',
+      });
+      
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error('User not found. Please check the username and try again.');
+        }
+        if (response.status === 403) {
+          throw new Error('API rate limit exceeded. Please try again later.');
+        }
+        throw new Error(`Failed to fetch user data: ${response.statusText}`);
+      }
+      
+      return response.json();
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error('Network error. Please check your connection and try again.');
+    }
   }
 
   async fetchRepositories(username: string): Promise<Repository[]> {
-    const response = await fetch(
-      `${this.baseUrl}/users/${username}/repos?sort=updated&per_page=100`
-    );
-    
-    if (!response.ok) {
-      throw new Error('Failed to fetch repositories');
+    try {
+      const response = await fetch(
+        `${this.baseUrl}/users/${username}/repos?sort=updated&per_page=100`,
+        {
+          headers: this.getHeaders(),
+          cache: 'no-store',
+        }
+      );
+      
+      if (!response.ok) {
+        if (response.status === 403) {
+          throw new Error('API rate limit exceeded. Please try again later.');
+        }
+        throw new Error(`Failed to fetch repositories: ${response.statusText}`);
+      }
+      
+      return response.json();
+    } catch (error) {
+      if (error instanceof Error) {
+        throw error;
+      }
+      throw new Error('Network error. Please check your connection and try again.');
     }
-    
-    return response.json();
   }
 
   async fetchLanguageStats(username: string): Promise<LanguageStats> {
