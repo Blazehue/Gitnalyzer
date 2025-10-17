@@ -101,7 +101,16 @@ export default function GitHubStatsVisualizer() {
             {error && (
               <Alert variant="destructive" className="mt-4">
                 <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{error}</AlertDescription>
+                <AlertDescription>
+                  {error}
+                  {error.includes('rate limit') && (
+                    <div className="mt-2 text-sm">
+                      💡 <strong>Tip:</strong> Add a GitHub token to increase your rate limit from 60 to 5,000 requests/hour.
+                      <br />
+                      See <code className="bg-black/10 px-1 py-0.5 rounded">RATE_LIMIT_SOLUTION.md</code> for instructions.
+                    </div>
+                  )}
+                </AlertDescription>
               </Alert>
             )}
           </CardContent>
