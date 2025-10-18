@@ -195,10 +195,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [shadcn/ui](https://ui.shadcn.com/) - Beautiful component library
 - [GitHub API](https://docs.github.com/en/rest) - For providing the data
 
-## 📊 Part of 30-Day GitHub Challenge
 
-This project is Day 1 of the 30-Day GitHub Contribution Challenge - building 30 projects in 30 days to reach 500+ contributions!
-
----
 
 Made with ❤️ by Blazehue | ⭐ Star this repo if you find it useful!
