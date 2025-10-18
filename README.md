@@ -1,51 +1,55 @@
-# 🚀 Gitnalyzer - GitHub Profile Stats Visualizer
+# Gitnalyzer - GitHub Profile Statistics Visualizer
 
-A beautiful, modern web application built with **Next.js 15** that visualizes GitHub profile statistics with stunning UI components and interactive charts.
+A modern web application built with Next.js 15 that visualizes GitHub profile statistics through interactive charts and comprehensive data displays.
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-## ✨ Features
+## Overview
 
-- 🔍 **Search GitHub Users** - Enter any GitHub username to fetch their profile
-- 📊 **Interactive Charts** - Visualize language usage with beautiful charts
-- 🎨 **Beautiful UI** - Modern design with Radix UI components and Tailwind CSS
-- 🌈 **Animated Backgrounds** - Aurora and beam animations for visual appeal
-- 📱 **Fully Responsive** - Works seamlessly on desktop, tablet, and mobile
-- ⚡ **Fast Performance** - Built with Next.js 15 and Turbopack
-- 🎯 **Top Repositories** - View user's most starred repositories
-- 👤 **Profile Information** - Display follower count, bio, location, and more
-- 🚫 **No Authentication Required** - Uses public GitHub API (60 requests/hour)
+Gitnalyzer provides an intuitive interface for exploring GitHub user profiles, offering detailed analytics and visualizations of repository data, programming language distributions, and contribution metrics. The application leverages the GitHub REST API to deliver real-time insights with a polished, responsive user interface.
 
-## 🛠️ Tech Stack
+## Key Features
+
+- **User Profile Search** - Retrieve and display comprehensive GitHub user information
+- **Interactive Data Visualization** - Dynamic charts showcasing language usage and repository statistics
+- **Modern UI Design** - Built with Radix UI components and Tailwind CSS for a professional aesthetic
+- **Animated Interface Elements** - Subtle aurora and beam animations enhance visual engagement
+- **Responsive Layout** - Optimized experience across desktop, tablet, and mobile devices
+- **Performance Optimized** - Leverages Next.js 15 with Turbopack for rapid load times
+- **Repository Insights** - Highlights top repositories by star count with detailed metrics
+- **Comprehensive Profile Data** - Displays followers, bio, location, company affiliation, and more
+- **Public API Access** - No authentication required for basic usage (60 requests/hour limit)
+
+## Technology Stack
 
 - **Framework**: Next.js 15.5.6 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **UI Components**: Radix UI + shadcn/ui
-- **Charts**: Recharts
-- **Animations**: Framer Motion
-- **API**: GitHub REST API v3
-- **Icons**: Lucide React & Tabler Icons
+- **UI Components**: Radix UI with shadcn/ui
+- **Data Visualization**: Recharts
+- **Animation Library**: Framer Motion
+- **Data Source**: GitHub REST API v3
+- **Icon Libraries**: Lucide React and Tabler Icons
 
-## 📦 Installation
+## Installation Guide
 
-### Prerequisites
+### System Requirements
 
 - Node.js 18.0 or higher
-- npm, yarn, pnpm, or bun
+- Package manager: npm, yarn, pnpm, or bun
 
-### Setup
+### Setup Instructions
 
-1. **Clone the repository**
+1. **Clone the Repository**
 ```bash
 git clone https://github.com/Blazehue/Gitnalyzer.git
 cd Gitnalyzer
 ```
 
-2. **Install dependencies**
+2. **Install Dependencies**
 ```bash
 npm install --legacy-peer-deps
 # or
@@ -54,7 +58,7 @@ yarn install
 pnpm install
 ```
 
-3. **Run the development server**
+3. **Start Development Server**
 ```bash
 npm run dev
 # or
@@ -63,138 +67,141 @@ yarn dev
 pnpm dev
 ```
 
-4. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
+4. **Access Application**
+Navigate to [http://localhost:3000](http://localhost:3000) in your web browser
 
-## 🚀 Usage
+## Usage Instructions
 
-1. Enter a GitHub username in the search box (e.g., `torvalds`, `gaearon`, `vercel`)
-2. Click **Search** or press Enter
-3. View the user's:
-   - Profile information (avatar, bio, location, company)
-   - Statistics (repositories, followers, following)
-   - Language breakdown chart
-   - Top 6 most starred repositories
-   - Account creation date
+1. Enter a valid GitHub username in the search field (examples: `torvalds`, `gaearon`, `vercel`)
+2. Submit the search query by clicking the search button or pressing Enter
+3. View the generated analytics including:
+   - User profile information (avatar, biography, location, company)
+   - Account statistics (repository count, followers, following)
+   - Programming language distribution chart
+   - Top 6 repositories ranked by stars
+   - Account registration date
 
-## 📁 Project Structure
+## Project Architecture
 
 ```
 gitnalyzer/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── page.tsx            # Home page
-│   │   └── globals.css         # Global styles
+│   │   ├── layout.tsx          # Application root layout
+│   │   ├── page.tsx            # Main page component
+│   │   └── globals.css         # Global stylesheet
 │   ├── components/
-│   │   ├── GitHubStatsVisualizer.tsx  # Main component
-│   │   ├── LanguageChart.tsx          # Language chart component
-│   │   ├── RepoCards.tsx              # Repository cards
-│   │   └── ui/                        # Reusable UI components
+│   │   ├── GitHubStatsVisualizer.tsx  # Primary application component
+│   │   ├── LanguageChart.tsx          # Language distribution chart
+│   │   ├── RepoCards.tsx              # Repository card grid
+│   │   └── ui/                        # Reusable UI component library
 │   ├── services/
-│   │   └── githubService.ts    # GitHub API integration
+│   │   └── githubService.ts    # GitHub API integration layer
 │   └── lib/
 │       └── utils.ts            # Utility functions
-├── public/                      # Static assets
+├── public/                      # Static asset directory
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.ts
 └── next.config.ts
 ```
 
-## 🎨 Components
+## Component Documentation
 
 ### GitHubStatsVisualizer
-Main component that orchestrates the entire application flow.
+Primary application component responsible for state management and orchestrating data flow between child components.
 
 ### LanguageChart
-Interactive donut chart showing programming language distribution.
+Interactive donut chart component that visualizes the distribution of programming languages across a user's repositories.
 
 ### RepoCards
-Grid display of top repositories with stars, forks, and language info.
+Grid-based component displaying repository cards with metrics including stars, forks, and primary language.
 
-## 🔧 Configuration
+## Configuration
 
 ### GitHub API Rate Limits
 
-The application uses the public GitHub API:
-- **Without Token**: 60 requests per hour per IP address
-- **With Token**: 5,000 requests per hour (recommended for production)
+The application interfaces with the public GitHub API under the following constraints:
 
-### ⚠️ Important: Add GitHub Token (Recommended)
+- **Unauthenticated Requests**: 60 requests per hour per IP address
+- **Authenticated Requests**: 5,000 requests per hour (recommended for production environments)
 
-To avoid rate limit issues:
+### GitHub Personal Access Token Setup (Recommended)
 
-1. **Create a GitHub Personal Access Token**:
-   - Visit: https://github.com/settings/tokens
-   - Generate new token (classic)
-   - Select `public_repo` scope (or no scopes for public data only)
-   - Copy the token
+To increase API rate limits and ensure optimal performance:
 
-2. **Create a `.env.local` file** in the project root:
+1. **Generate Personal Access Token**:
+   - Navigate to: https://github.com/settings/tokens
+   - Create new token (classic)
+   - Select `public_repo` scope (or no scopes for public data access only)
+   - Copy the generated token
+
+2. **Configure Environment Variables**:
+Create a `.env.local` file in the project root:
 ```env
 NEXT_PUBLIC_GITHUB_TOKEN=your_github_personal_access_token
 ```
 
-3. **Restart the development server**:
+3. **Restart Development Server**:
 ```bash
 npm run dev
 ```
 
-The token is automatically used by the GitHub service - no code changes needed!
+The GitHub service automatically utilizes the configured token without requiring code modifications.
 
-> 📖 For detailed instructions, see [RATE_LIMIT_SOLUTION.md](./RATE_LIMIT_SOLUTION.md)
+> For comprehensive setup instructions, refer to [RATE_LIMIT_SOLUTION.md](./RATE_LIMIT_SOLUTION.md)
 
-## 📝 Scripts
+## Available Scripts
 
 ```bash
-npm run dev      # Start development server with Turbopack
-npm run build    # Build for production
+npm run dev      # Launch development server with Turbopack
+npm run build    # Create production build
 npm run start    # Start production server
-npm run lint     # Run ESLint
+npm run lint     # Execute ESLint code analysis
 ```
 
-## 🌐 Deployment
+## Deployment
 
-### Deploy on Vercel (Recommended)
+### Vercel Deployment (Recommended)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Blazehue/Gitnalyzer)
 
-1. Push your code to GitHub
-2. Import your repository to Vercel
-3. Deploy with one click!
+1. Commit and push code to GitHub repository
+2. Import repository into Vercel dashboard
+3. Configure environment variables if using GitHub token
+4. Deploy application
 
-### Other Platforms
+### Alternative Deployment Platforms
 
-This Next.js app can be deployed to:
+This Next.js application is compatible with:
 - Netlify
 - Railway
 - Render
 - AWS Amplify
-- Any Node.js hosting service
+- Any Node.js-compatible hosting provider
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please check out the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines.
+Contributions are welcome and appreciated. Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file for contribution guidelines and code standards.
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for complete details.
 
-## 👨‍💻 Author
+## Author
 
 **Blazehue**
 - GitHub: [@Blazehue](https://github.com/Blazehue)
-- Project: [Gitnalyzer](https://github.com/Blazehue/Gitnalyzer)
+- Repository: [Gitnalyzer](https://github.com/Blazehue/Gitnalyzer)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- [Next.js](https://nextjs.org/) - The React Framework
+- [Next.js](https://nextjs.org/) - React-based web framework
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [Radix UI](https://www.radix-ui.com/) - Unstyled, accessible components
-- [shadcn/ui](https://ui.shadcn.com/) - Beautiful component library
-- [GitHub API](https://docs.github.com/en/rest) - For providing the data
+- [Radix UI](https://www.radix-ui.com/) - Accessible component primitives
+- [shadcn/ui](https://ui.shadcn.com/) - Component library built on Radix UI
+- [GitHub API](https://docs.github.com/en/rest) - Data provider
 
+---
 
-
-Made with ❤️ by Blazehue | ⭐ Star this repo if you find it useful!
+**Maintained by Blazehue** | If you find this project valuable, please consider starring the repository.
