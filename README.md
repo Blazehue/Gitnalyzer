@@ -1,4 +1,4 @@
-# Gitnalyzer - GitHub Profile Statistics Visualizer
+# Gitnalyzer - GitHub Profile Statistics Visualizer.
 
 A modern web application built with Next.js 15 that visualizes GitHub profile statistics through interactive charts and comprehensive data displays.
 
